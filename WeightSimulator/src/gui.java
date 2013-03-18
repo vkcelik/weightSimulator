@@ -6,15 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class gui extends JFrame{
 	
-	private String onDisplay = "";
-	JTextField textField;
+	private String onDisplay = "0";
+	private JTextField textField;
 	
 	public static void main(String[] args) {
 		JFrame f = new gui();	
 		f.setVisible(true);
+	}
+	
+	public String getOnDisplay() {
+		return onDisplay;
+	}
+	
+	public void setOnDisplay(String newText) {
+		onDisplay = newText;
 	}
 
 	public gui() {
@@ -36,7 +46,7 @@ public class gui extends JFrame{
 		
 		JTextField msgToUser = new JTextField("Indtast nr.");
 		msgToUser.setEditable(false);
-		textField = new JTextField();
+		textField = new JTextField("0 kg");
 		textField.setEditable(false);
 
 		JButton b0 = new JButton("0");
@@ -103,16 +113,17 @@ public class gui extends JFrame{
 				textField.setText("hej");
 			}
 		});
-//		
-//		class ClearAction implements ActionListener{
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				// TODO Auto-generated method stub
-//				text.setText(text.getText(0, text.getText().length()-1));
-//			}
-//		
-//		}
+		
+		slide.addChangeListener(new ChangeListener() {
+			public void stateChanged(ChangeEvent e) {
+				 JSlider source = (JSlider)e.getSource();
+				 if(!source.getValueIsAdjusting()) {
+					 onDisplay = "" + source.getValue();
+					 textField.setText(onDisplay + " kg"); 
+				 }
+			}
+		});
 
 	}
+
 }
