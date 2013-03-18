@@ -10,8 +10,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class gui extends JFrame{
-	
-	private String onDisplay = "0";
+
 	private JTextField textField;
 	
 	public static void main(String[] args) {
@@ -20,11 +19,11 @@ public class gui extends JFrame{
 	}
 	
 	public String getOnDisplay() {
-		return onDisplay;
+		return textField.getText();
 	}
 	
 	public void setOnDisplay(String newText) {
-		onDisplay = newText;
+		textField.setText(newText);
 	}
 
 	public gui() {
@@ -118,8 +117,7 @@ public class gui extends JFrame{
 			public void stateChanged(ChangeEvent e) {
 				 JSlider source = (JSlider)e.getSource();
 				 if(!source.getValueIsAdjusting()) {
-					 onDisplay = "" + source.getValue();
-					 textField.setText(onDisplay + " kg"); 
+					 textField.setText(source.getValue() + " kg"); 
 				 }
 			}
 		});
