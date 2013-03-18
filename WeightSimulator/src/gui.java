@@ -126,4 +126,19 @@ public class gui extends JFrame{
 
 	}
 
+	public String getNettoWeight() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void setTare() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void displayWeight() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
