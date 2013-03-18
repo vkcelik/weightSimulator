@@ -7,21 +7,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-public class gui {
+public class gui extends JFrame{
 	
 	private String onDisplay = "";
+	JTextField textField;
 	
 	public static void main(String[] args) {
-		javax.swing.SwingUtilities.invokeLater(new Runnable() {
-			public void run() {
-				createAndShowGUI();
-			}
-		});	
+		JFrame f = new gui();	
+		f.setVisible(true);
 	}
 
-	private static void createAndShowGUI() {
+	public gui() {
 		// define containers
-		JFrame f = new JFrame("Mettler Toledo Basic Weight Simulator");
 		JPanel keypad = new JPanel();
 		JPanel weight = new JPanel();
 		JPanel textpanel = new JPanel();
@@ -39,7 +36,7 @@ public class gui {
 		
 		JTextField msgToUser = new JTextField("Indtast nr.");
 		msgToUser.setEditable(false);
-		JTextField textField = new JTextField();
+		textField = new JTextField();
 		textField.setEditable(false);
 
 		JButton b0 = new JButton("0");
@@ -96,17 +93,16 @@ public class gui {
 		mainpanel.add(buttons, BorderLayout.SOUTH);
 
 		// adding main panel
-		f.setContentPane(mainpanel);
+		setContentPane(mainpanel);
 
-		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		f.pack();
-		f.setVisible(true);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		pack();
 
-//		bClear.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				textField.setText(textField.getText(0, textField.getText().length()-1));
-//			}
-//		});
+		bClear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				textField.setText("hej");
+			}
+		});
 //		
 //		class ClearAction implements ActionListener{
 //
